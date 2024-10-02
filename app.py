@@ -4,6 +4,8 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from dotenv import load_dotenv
+
+# Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
@@ -36,4 +38,4 @@ def handle_message(event):
         TextSendMessage(text=event.message.text))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=10000)
