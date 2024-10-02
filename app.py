@@ -10,9 +10,17 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# LINE API credentials
-line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
-handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
+# Get sensitive information from environment variables
+CHANNEL_ACCESS_TOKEN = os.getenv('CHANNEL_ACCESS_TOKEN')
+CHANNEL_SECRET = os.getenv('CHANNEL_SECRET')
+
+# Initialize Line Bot API and Webhook Handler
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(CHANNEL_SECRET)
+
+@app.route("/")
+def home():
+    return "Welcome to Kanpot [Kodung] Line Chat Bot! V.2 "
 
 @app.route("/callback", methods=['POST'])
 def callback():
