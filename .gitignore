@@ -1,1 +1,5 @@
+# Ignore credential.json (Google service account credentials)
+credentials.json
+
+# Ignore .env (environment variables)
 .env
