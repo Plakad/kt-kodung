@@ -26,15 +26,15 @@ credentials_info = {
     "client_x509_cert_url": os.getenv("client_x509_cert_url")
 }
 
-# Create the credentials object
-credentials = Credentials.from_service_account_info(credentials_info)
+# Create the credentials object from the service account info
+google_creds = Credentials.from_service_account_info(credentials_info)
 
 # Define the scope of access
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-# Authenticate using the JSON credentials file
-creds = ServiceAccountCredentials.from_json_keyfile_name(credentials_info, scope)
-# Authorize the client to interact with Google Sheets
-client = gspread.authorize(creds)
+
+# Authorize the client to interact with Google Sheets using gspread
+client = gspread.authorize(google_creds)
+
 # Open the Google Sheet (replace "Your Google Sheet Name" with the actual name of your sheet)
 sheet = client.open("line-chat-bot-score").sheet1
 # Now you can access the sheet and fetch records
