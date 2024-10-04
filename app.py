@@ -40,8 +40,14 @@ credentials_info = {
     "universe_domain": "googleapis.com"
 }
 
+# Define the scope of access
+scope = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
 # Create Google Sheets credentials object
-google_creds = Credentials.from_service_account_info(credentials_info)
+google_creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
 
 # Authorize the client to interact with Google Sheets
 client = gspread.authorize(google_creds)
